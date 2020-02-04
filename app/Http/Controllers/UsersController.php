@@ -21,9 +21,46 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
-        return view('users.show', [
+        $session_items = $user->session_items()->orderBy('session_date', 'desc')->paginate(28);
+        
+        $data = [
             'user' => $user,
-        ]);
+            'session_items' => $session_items,
+        ];
+        
+        $data += $this->couts($user);
+
+        return view('users.show', $data);
     }
+    
+    public function followings($id)
+    {
+        $user = User::find($id);
+        $followings = $user->followings()->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'users' => $followings,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.followings', $data);
+    }
+
+    public function followers($id)
+    {
+        $user = User::find($id);
+        $followers = $user->followers()->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'users' => $followers,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.followers', $data);
+    }
+    
 }
