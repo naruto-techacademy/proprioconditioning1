@@ -28,7 +28,7 @@ class UsersController extends Controller
             'session_items' => $session_items,
         ];
         
-        $data += $this->couts($user);
+        $data += $this->counts($user);
 
         return view('users.show', $data);
     }

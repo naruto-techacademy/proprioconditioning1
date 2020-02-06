@@ -3,7 +3,7 @@
 @section('content')
     @if (Auth::check())
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-12">
                 @if (Auth::id() == $user->id)
                     {!! Form::open(['route' => 'session_items.store']) !!}
                         <div class="form-group">
@@ -23,7 +23,7 @@
                              <p>○トレーニング時間（分）<input type="number" name="session_minutes" value="120"　placeholder="multiple of 5" step="5" min="0" max="600">分<br>
                              5分単位で記入してください。1時間の場合には「60」、1時間40分の場合には「100」完全レストでは「0」となります。</p>
                             
-                             <p>○備考 疾病傷害等の状況<br /><input type="textarea" name='remarks' style="width:400px;;height:50px" value="特になし"</p>
+                             <p>○備考 疾病傷害等の状況<br /><input type="textarea" name='remarks' style="width:400px;;height:50px" value="なし"</p>
                             <p><br>{!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}</p>
                             <span style="font-size:20px;color:#FF0000;">A:C Ratioが2.0を超えている時は、要注意！</span>
                         </div>

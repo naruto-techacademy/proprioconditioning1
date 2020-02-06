@@ -28,7 +28,8 @@ class Session_itemsController extends Controller
             'session_date' => 'required',
             'session_category' => 'required|max:191',
             'session_minutes' => 'required',
-            'session_rpe' => 'required',
+            'session_rpe' => 'required', 
+            'remarks'=>'required',
         ]);
 
         $request->user()->session_items()->create([

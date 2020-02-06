@@ -2,6 +2,7 @@
     <ul class="list-unstyled">
         @foreach ($users as $user)
             <li class="media">
+                @include('user_follow.follow_button', ['user' => $user])
                 <img class="mr-2 rounded" src="{{ Gravatar::src($user->email, 50) }}" alt="">
                 <div class="media-body">
                     <div>

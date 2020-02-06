@@ -1,6 +1,6 @@
 <ul class="list-unstyled">
             <li class="media mb-3">
-                <table border="1">
+                <table border="1"width="100%" style="table-layout: auto;">
                     <tr align="center">
                         <th>トレーニング<br>日時</th>
                         <th>トレーニングの<br>つらさ</th>
@@ -28,7 +28,7 @@
                             @else
                             {{ sprintf('%.2f',$session_item->rpe(7)*4/$session_item->rpe(28)) }}
                             @endif</td>
-                        <td>{{ $session_item->session_remarks }}</td>
+                        <td>{{ $session_item->remarks }}</td>
                         <td>@if (Auth::id() == $session_item->user_id)
                         {!! Form::open(['route' => ['session_items.destroy', $session_item->id], 'method' => 'delete']) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
