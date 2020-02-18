@@ -7,7 +7,7 @@
                 @if (Auth::id() == $user->id)
                     {!! Form::open(['route' => 'session_items.store']) !!}
                         <div class="form-group">
-                             <p>○トレーニング日時<input type="date" name="session_date" min="2019-01-01" max="2030-12-31"></p>
+                             <p>○トレーニング日時 （例：2020/2/14）<input type="date" name="session_date" min="2019-01-01" max="2030-12-31"></p>
                              <p>○トレーニングカテゴリー<select name="session_category" size="1">
                                     <option value="通常トレーニング">通常トレーニング</option>
                                     <option value="公式試合">公式試合</option>
