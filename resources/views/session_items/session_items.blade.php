@@ -42,4 +42,3 @@
         </li>
    
 </ul>
-{{ $session_items->links('pagination::bootstrap-4') }}

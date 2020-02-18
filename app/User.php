@@ -32,6 +32,8 @@ class User extends Authenticatable
         return $this->hasMany(Session_item::class);
     }
     
+
+    
     public function followers()
     {
         return $this->belongsToMany(User::class, 'user_follow', 'follow_id', 'user_id')->withTimestamps();
@@ -48,8 +50,11 @@ class User extends Authenticatable
         $exist = $this->is_following($userId);
         // 相手が自分自身ではないかの確認
         $its_me = $this->id == $userId;
+        // 同じチームでないこと
+        $user = User::find($userId);
+        $other_team = $this->team_id !== $user->team_id;        
     
-        if ($exist || $its_me) {
+        if ($exist || $its_me || $other_team) {
             // 既にフォローしていれば何もしない
             return false;
         } else {
@@ -80,4 +85,7 @@ class User extends Authenticatable
     {
         return $this->followings()->where('follow_id', $userId)->exists();
     }
+    
+    
+    
 }

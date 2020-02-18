@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserFollowController extends Controller
 {
     public function store(Request $request, $id)
-    {
-        \Auth::user()->follow($id);
+    {   
+        $user = User::find($id);
+        \Auth::user()->follow($id, $user->team_id);
+        
         return back();
     }
 
