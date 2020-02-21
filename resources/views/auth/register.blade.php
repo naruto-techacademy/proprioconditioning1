@@ -15,7 +15,7 @@
                 </div>
 
                  <div class="form-group">
-                    {!! Form::label('team_id', 'Team_id') !!}
+                    {!! Form::label('team_id', 'Team Name') !!}
                     {!! Form::text('team_id', old('team_id'), ['class' => 'form-control']) !!}
                 </div>
                 

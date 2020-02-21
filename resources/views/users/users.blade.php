@@ -12,7 +12,13 @@
         @foreach ($users as $user)
             <tr align="center">
                         <td>{{ $user->name }}</td>
-                        <td>{{ sprintf('%.2f',$latest_item->rpe(7)*4/$latest_item->rpe(28)) }}</td>
+                        <td>@if(empty($session_item->rpe(28))){
+                            {{ 'データ不足により計算不可' }}
+                            }
+                            @else
+                            {{ sprintf('%.2f',$session_item->rpe(7)*4/$session_item->rpe(28)) }}
+                            @endif
+                            </td>
                         <td>{{ $latest_item->session_date }}</td>
                         <td> {!! link_to_route('users.show', '個人データ詳細', ['id' => $user->id]) !!}</td>
                         
