@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;// 追加
 
 class Session_itemsController extends Controller
 {
@@ -24,6 +25,7 @@ class Session_itemsController extends Controller
     
     public function store(Request $request)
     {
+        $user = Auth::user();
         $this->validate($request, [
             'session_date' => 'required',
             'session_category' => 'required|max:191',
@@ -39,7 +41,8 @@ class Session_itemsController extends Controller
             'session_minutes' => $request->session_minutes,
             'session_rpe' => $request->session_rpe,
             'remarks' => $request->remarks,
-            'session_work' => $request->session_minutes* $request->session_rpe
+            'session_work' => $request->session_minutes* $request->session_rpe,
+            'team_id' => Auth::user()->team_id,
         ]);
 
         return back();

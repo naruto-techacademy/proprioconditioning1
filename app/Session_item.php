@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Session_item extends Model
 {
-    protected $fillable = ['session_date','session_category','session_rpe','session_minutes', 'user_id', 'remarks', 'session_work'];
+    protected $fillable = ['session_date','session_category','session_rpe','session_minutes', 'user_id', 'remarks', 'session_work','team_id'];
 
     public function user()
     {
