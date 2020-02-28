@@ -24,7 +24,10 @@
                         
                      <p>○備考 疾病傷害等の状況<br /><input type="textarea" name='remarks' style="width:400px;;height:50px" value="なし"</p>
                      <p><br>{!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}</p>
+                     <?php $latest_item = $user->session_items()->orderBy('session_date' , 'desc')->first(); ?>
+                     @if ($latest_item->rpe(7)*4/$latest_item->rpe(28) >2.0)
                      <span style="font-size:20px;color:#FF0000;">A:C Ratioが2.0を超えている時は、要注意！</span>
+                     @endif
                 </div>
                     {!! Form::close() !!}
                 @endif
