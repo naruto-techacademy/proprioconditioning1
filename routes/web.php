@@ -12,7 +12,8 @@
 */
 
 Route::get('/', 'Session_itemsController@index');
-    
+Route::get('/export{keyword?}', 'Session_itemsController@export')->name('export.session_items');
+
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');

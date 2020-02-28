@@ -12,6 +12,7 @@
         @foreach ($users as $user)
             <tr align="center">
                         <td>{{ $user->name }}</td>
+                        <?php $latest_item = $user->session_items()->orderBy('session_date' , 'desc')->first(); ?>
                         <td>@if(empty($latest_item->rpe(28))){
                             {{ 'データ不足により計算不可' }}
                             }
@@ -26,4 +27,5 @@
         @endforeach
             </ul>
     {{ $users->links('pagination::bootstrap-4') }}
+    
 @endif

@@ -16,6 +16,7 @@ class UsersController extends Controller
         $users = User::orderBy('id', 'desc')->where('team_id',$user->team_id)->paginate(10);
         $latest_item = optional($user->session_items()->orderBy('session_date' , 'desc')->first());
         
+
         return view('users.index', [
             'users' => $users,
             'latest_item' => $latest_item,

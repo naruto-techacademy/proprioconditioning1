@@ -1,5 +1,6 @@
 <ul class="list-unstyled">
-            <li class="media mb-3">
+             <p>{{ $user->name }}のデータ詳細<br></p>
+             <li class="media mb-3">
                 <table border="1"width="100%" style="table-layout: auto;">
                     <tr align="center">
                         <th>トレーニング<br>日時</th>
