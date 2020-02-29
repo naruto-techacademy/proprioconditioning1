@@ -26,7 +26,10 @@
                              <p>○備考 疾病傷害等の状況<br /><input type="textarea" name='remarks' style="width:400px;;height:50px" value="なし"</p>
                             <p><br>{!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}</p>
                             <?php $latest_item = $user->session_items()->orderBy('session_date' , 'desc')->first(); ?>
-                     @if ($latest_item->rpe(7)*4/$latest_item->rpe(28) >2.0)
+                     @if (empty($latest_item) || empty($latest_item->rpe(28))){
+                            {{ 'データを入力しよう' }}
+                            }
+                    @elseif($latest_item->rpe(7)*4/$latest_item->rpe(28) >2.0)
                      <span style="font-size:20px;color:#FF0000;">A:C Ratioが2.0を超えているので、トレーニング量と強度を調整して、怪我の発生を予防しよう！</span>
                      @else
                      <span style="font-size:20px;color:#FF0000;">この調子でA:C Ratioが2.0を超えないようにトレーニングを継続していきましょう。</span>
