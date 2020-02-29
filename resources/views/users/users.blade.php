@@ -1,8 +1,9 @@
 @if (count($users) > 0)
     <ul class="list-unstyled">
                 <div>
-                        <p>各選手の最新Acute:Chronic Ratio</p>
+                        <h5>各選手の最新Acute:Chronic Ratio</h5>
                 </<div>
+               
         <table border="1"width="100%" style="table-layout: auto;">
                     <tr align="center">
                         <th>選手名</th>
@@ -27,7 +28,11 @@
                             @endif</td>
                         <td> {!! link_to_route('users.show', '個人データ詳細', ['id' => $user->id]) !!}</td>
         @endforeach
-            </ul>
+        </table>
+        選手全員の全データをダウンロードします。<a href="{{ route('export.session_items') }}" class="btn btn-primary font-weight-bold"><i class="fas fa-download"></i> Export to CSV</a>
+          
+    </ul>
+     
     {{ $users->links('pagination::bootstrap-4') }}
-    
+          
 @endif

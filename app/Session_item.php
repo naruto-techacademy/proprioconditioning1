@@ -12,7 +12,7 @@ class Session_item extends Model
 
    public function scopeSearch($query, $team_id) //export追加
     {
-        return $query->where('team_id','like', '%'. $team_id .'%')
+        return $query->where('team_id', $Auth::user()->team_id)
                       ->get();
     }
     

@@ -1,5 +1,5 @@
 <ul class="list-unstyled">
-             <p>{{ $user->name }}のデータ詳細<br></p>
+             <h5>{{ $user->name }}さんのトレーニング記録<br></h5>
              <li class="media mb-3">
                 <table border="1"width="100%" style="table-layout: auto;">
                     <tr align="center">

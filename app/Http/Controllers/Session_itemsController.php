@@ -74,11 +74,11 @@ class Session_itemsController extends Controller
           stream_filter_prepend($stream,'convert.iconv.utf-8/cp932//TRANSLIT');
  
             // タイトルを追加
-          fputcsv($stream, ['id','team_id','session_category','created_at','updated_at']);
+          fputcsv($stream, ['name','session_date','session_work','session_rpe','session_minutes','session_category']);
  
-          Session_item::where('team_id', 'LIKE', '%'.$team_id.'%')->chunk( 1000, function($results) use ($stream) {
+          Session_item::where('team_id', Auth::user()->team_id)->chunk( 1000, function($results) use ($stream) {
               foreach ($results as $result) {
-                  fputcsv($stream, [$result->id,$result->team_id,$result->created_at,$result->updated_at]);
+                  fputcsv($stream, [$result->user->name,$result->session_date,$result->session_work,$result->session_rpe,$result->session_minutes,$result->session_category]);
               }
           });
           fclose($stream);

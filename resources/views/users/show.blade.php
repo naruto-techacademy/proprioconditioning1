@@ -30,8 +30,10 @@
                             }
                      @elseif ($latest_item->rpe(7)*4/$latest_item->rpe(28) >2.0)
                      <span style="font-size:20px;color:#FF0000;">A:C Ratioが2.0を超えているので、トレーニング量と強度を調整して、怪我の発生を予防しよう！</span>
+                     @elseif($latest_item->rpe(7)*4/$latest_item->rpe(28) <0.8)
+                     <span style="font-size:20px;color:#FF0000;">直近7日間のトレーニング量が減っています。</span>
                      @else
-                     <span style="font-size:20px;color:#FF0000;">この調子でA:C Ratioが2.0を超えないようにトレーニングを継続していきましょう。</span>
+                     <span style="font-size:20px;color:#FF0000;">質と量が適切なトレーニングができています。この調子でトレーニングを継続していきましょう。</span>
                      @endif
                 </div>
                     {!! Form::close() !!}
@@ -41,7 +43,7 @@
                 @include('session_items.session_items', ['session_items' => $session_items])
                 {{ $session_items->links('pagination::bootstrap-4') }}
             @endif
-            <a href="{{ route('export.session_items') }}" class="btn btn-primary font-weight-bold"><i class="fas fa-download"></i> Export to CSV</a>
+            
         </div>
     </div>
     
