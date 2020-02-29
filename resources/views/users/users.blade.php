@@ -13,17 +13,19 @@
             <tr align="center">
                         <td>{{ $user->name }}</td>
                         <?php $latest_item = $user->session_items()->orderBy('session_date' , 'desc')->first(); ?>
-                        <td>@if(empty($latest_item->rpe(28))){
+                        <td>@if (empty($latest_item) || empty($latest_item->rpe(28))){
                             {{ 'データ不足により計算不可' }}
                             }
                             @else
                             {{ sprintf('%.2f',$latest_item->rpe(7)*4/$latest_item->rpe(28)) }}
                             @endif
                             </td>
-                        <td>{{ $latest_item->session_date }}</td>
+                        <td>@if (empty($latest_item) || empty($latest_item->session_date)){
+                             {{ 'データ不足により計算不可' }}
+                            }
+                            @else{{ $latest_item->session_date }}
+                            @endif</td>
                         <td> {!! link_to_route('users.show', '個人データ詳細', ['id' => $user->id]) !!}</td>
-                        
-            
         @endforeach
             </ul>
     {{ $users->links('pagination::bootstrap-4') }}

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;// 追加
+use App\Session_item; // export追加
+use DB; // export追加
 
 class Session_itemsController extends Controller
 {
@@ -58,4 +61,31 @@ class Session_itemsController extends Controller
 
         return back();
     }
+    
+    public function export( Request $request ) //ここより下エクスポートのため追加
+    {
+        $response = new StreamedResponse (function() use ($request){
+ 
+            // キーワードで検索
+            $team_id = $request->team_id;
+            $stream = fopen('php://output', 'w');
+ 
+            //　文字化け回避
+          stream_filter_prepend($stream,'convert.iconv.utf-8/cp932//TRANSLIT');
+ 
+            // タイトルを追加
+          fputcsv($stream, ['id','team_id','session_category','created_at','updated_at']);
+ 
+          Session_item::where('team_id', 'LIKE', '%'.$team_id.'%')->chunk( 1000, function($results) use ($stream) {
+              foreach ($results as $result) {
+                  fputcsv($stream, [$result->id,$result->team_id,$result->created_at,$result->updated_at]);
+              }
+          });
+          fclose($stream);
+      });
+      $response->headers->set('Content-Type', 'application/octet-stream');
+      $response->headers->set('Content-Disposition', 'attachment; filename="Session_item.csv"');
+
+      return $response;
+  }
 }

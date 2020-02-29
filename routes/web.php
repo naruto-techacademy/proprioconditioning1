@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'Session_itemsController@index');
-Route::get('/export{keyword?}', 'Session_itemsController@export')->name('export.session_items');
+Route::get('/export{team_id?}', 'Session_itemsController@export')->name('export.session_items');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');

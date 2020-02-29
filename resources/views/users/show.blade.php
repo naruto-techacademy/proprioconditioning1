@@ -26,7 +26,9 @@
                      <p><br>{!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}</p>
                      <?php $latest_item = $user->session_items()->orderBy('session_date' , 'desc')->first(); ?>
                      @if ($latest_item->rpe(7)*4/$latest_item->rpe(28) >2.0)
-                     <span style="font-size:20px;color:#FF0000;">A:C Ratioが2.0を超えている時は、要注意！</span>
+                     <span style="font-size:20px;color:#FF0000;">A:C Ratioが2.0を超えているので、トレーニング量と強度を調整して、怪我の発生を予防しよう！</span>
+                     @else
+                     <span style="font-size:20px;color:#FF0000;">この調子でA:C Ratioが2.0を超えないようにトレーニングを継続していきましょう。</span>
                      @endif
                 </div>
                     {!! Form::close() !!}
@@ -36,6 +38,8 @@
                 @include('session_items.session_items', ['session_items' => $session_items])
                 {{ $session_items->links('pagination::bootstrap-4') }}
             @endif
+            <a href="{{ route('export.session_items') }}" class="btn btn-primary font-weight-bold"><i class="fas fa-download"></i> Export to CSV</a>
         </div>
     </div>
+    
 @endsection

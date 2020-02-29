@@ -4,11 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Http\Request; //export追加
 
 class Session_item extends Model
 {
     protected $fillable = ['session_date','session_category','session_rpe','session_minutes', 'user_id', 'remarks', 'session_work','team_id'];
 
+   public function scopeSearch($query, $team_id) //export追加
+    {
+        return $query->where('team_id','like', '%'. $team_id .'%')
+                      ->get();
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);

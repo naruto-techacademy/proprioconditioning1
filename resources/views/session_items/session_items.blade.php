@@ -22,7 +22,10 @@
                         <td>{{ $session_item->session_category}}</td>
                         <td>{{ $session_item->session_rpe*$session_item->session_minutes }}</td>
                         <td>{{ $session_item->rpe(7) }}</td>
-                        <td>{{ $session_item->rpe(28) }}</td>
+                        <td>@if(empty($session_item->rpe(28))){
+                            {{ 'データ不足により計算不可' }}
+                            }
+                            @endif{{ $session_item->rpe(28) }}</td>
                         <td>@if(empty($session_item->rpe(28))){
                             {{ 'データ不足により計算不可' }}
                             }
