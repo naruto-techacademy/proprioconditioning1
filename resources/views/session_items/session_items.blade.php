@@ -3,13 +3,13 @@
              <li class="media mb-3">
                 <table border="1"width="100%" style="table-layout: auto;">
                     <tr align="center">
-                        <th>トレーニング<br>日時</th>
-                        <th>トレーニングの<br>つらさ</th>
-                        <th>トレーニング<br>時間</th>
+                        <th>トレーニング日</th>
+                        <th>トレーニングの<br>つらさ(RPE)</th>
+                        <th>トレーニング<br>時間(Minutes)</th>
                         <th>トレーニング<br>カテゴリー</th>
-                        <th>Session RPE</th>
-                        <th>Acute RPE</th>
-                        <th>Chronic RPE</th>
+                        <th> Work Load</th>
+                        <th>Acute Load</th>
+                        <th>Chronic Load</th>
                         <th>A:C Ratio</th>
                         <th>備考</th>
                     </tr>

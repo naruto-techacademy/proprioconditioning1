@@ -74,7 +74,7 @@ class Session_itemsController extends Controller
           stream_filter_prepend($stream,'convert.iconv.utf-8/cp932//TRANSLIT');
  
             // タイトルを追加
-          fputcsv($stream, ['name','session_date','session_work','session_rpe','session_minutes','session_category']);
+          fputcsv($stream, ['選手名','トレーニング日','Work Load','トレーニングのつらさ','トレーニング時間','トレーニングカテゴリー']);
  
           Session_item::where('team_id', Auth::user()->team_id)->chunk( 1000, function($results) use ($stream) {
               foreach ($results as $result) {
