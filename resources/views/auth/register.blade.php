@@ -25,12 +25,12 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'Password') !!}　半角英数：6文字以上
+                    {!! Form::label('password', 'Password') !!}　半角英数6文字以上で設定してください。
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'Confirmation') !!}
+                    {!! Form::label('password_confirmation', 'Confirmation') !!}　パスワードを再入力してください。
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
 
