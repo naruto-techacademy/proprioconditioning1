@@ -4,25 +4,49 @@
     <div class="text-center">
         <h1>Log in</h1>
     </div>
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <form method="POST" action="{{ route('login') }}">
+                        {{ csrf_field() }}
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email">E-Mail Address</label>
+                        <div class="form-group">
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
+                    </div>
 
-    <div class="row">
-        <div class="col-sm-6 offset-sm-3">
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <label for="password">Password</label>
 
-            {!! Form::open(['route' => 'login.post']) !!}
-                <div class="form-group">
-                    {!! Form::label('email', 'Email') !!} 
-                    {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
-                </div>
+                            <div class="form-group">
+                                <input id="password" type="password" class="form-control" name="password" required>
 
-                <div class="form-group">
-                    {!! Form::label('password', 'Password') !!}　
-                    {!! Form::password('password', ['class' => 'form-control']) !!}
-                </div>
-
-                {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}
-            {!! Form::close() !!}
-
-            <p class="mt-2">New user? {!! link_to_route('signup.get', 'Sign up now!') !!}</p>
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                    </div>
+                        <div class="col-md-6">
+                                <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                </label>
+                        </div>
+                        <div class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                        </div>
+                    <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                    Login
+                            </button>
+                    </div>
+                </form>   
+            </div>
         </div>
-    </div>
 @endsection

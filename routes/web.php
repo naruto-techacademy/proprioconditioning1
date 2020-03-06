@@ -18,6 +18,10 @@ Route::get('/export{team_id?}', 'Session_itemsController@export')->name('export.
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
 
+//パスワード変更
+Route::get('changepassword', 'HomeController@showChangePasswordForm');
+Route::post('changepassword', 'HomeController@changePassword')->name('changepassword');
+
 // ログイン認証
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
@@ -38,3 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('session_items', 'Session_itemsController', ['only' => ['store', 'destroy']]);
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

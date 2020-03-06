@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://e815c9e5bdee4322b9c6691055b4f1d5.vfs.cloud9.us-east-1.amazonaws.com/'),
 
     /*
     |--------------------------------------------------------------------------

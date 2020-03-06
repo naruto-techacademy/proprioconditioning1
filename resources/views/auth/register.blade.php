@@ -10,7 +10,7 @@
 
             {!! Form::open(['route' => 'signup.post']) !!}
                 <div class="form-group">
-                    {!! Form::label('name', 'Name') !!}　フルネームで登録ください。
+                    {!! Form::label('name', 'Name') !!}　
                     {!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
                 </div>
 
@@ -20,17 +20,17 @@
                 </div>
                 
                 <div class="form-group">
-                    {!! Form::label('email', 'Email') !!}　ログイン時に使用します。
+                    {!! Form::label('email', 'Email') !!}　（ログインに使用）
                     {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'Password') !!}　半角英数6文字以上で設定してください。
+                    {!! Form::label('password', 'Password') !!}　（半角英数6文字以上）
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'Confirmation') !!}　パスワードを再入力してください。
+                    {!! Form::label('password_confirmation', 'Confirmation') !!}　（確認用）
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
 
