@@ -21,6 +21,11 @@ class UsersController extends Controller
             'users' => $users,
             'latest_item' => $latest_item,
         ]);
+        
+        return view('admin.home', [
+            'users' => $users,
+            'latest_item' => $latest_item,
+        ]);
     }
     
     public function show($id)

@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app_admin')
 
 @section('content')
     <div class="text-center">
-        <h1>Log in</h1>
+        <h1>管理者ログイン</h1>
     </div>
         <div class="row">
             <div class="col-sm-6 offset-sm-3">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('admin.login') }}">
                         {{ csrf_field() }}
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email">E-Mail Address</label>
@@ -38,12 +38,7 @@
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                                 </label>
                         </div>
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                        </a>
-                        <a class="btn btn-link" href="{{ route('admin.login') }}">
-                                    管理者のログインページ
-                        </a>
+                        
                     <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">
                                     Login

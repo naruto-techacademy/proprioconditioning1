@@ -40,6 +40,7 @@
                 @endif
             
             @if (count($session_items) > 0)
+                ユーザーズショーブレード
                 @include('session_items.session_items', ['session_items' => $session_items])
                 {{ $session_items->links('pagination::bootstrap-4') }}
             @endif
