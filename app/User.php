@@ -33,7 +33,7 @@ class User extends Authenticatable
         return $this->hasMany(Session_item::class);
     }
     
-
+ 
     
     public function followers()
     {
