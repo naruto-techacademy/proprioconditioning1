@@ -39,7 +39,7 @@
     
     Route::resource('session_items', 'Session_itemsController', ['only' => ['store', 'destroy']]);
 });
-
+ 
 
 Auth::routes();
 
