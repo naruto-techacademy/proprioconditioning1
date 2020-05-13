@@ -9,6 +9,7 @@
         <div class="collapse navbar-collapse" id="nav-bar">
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
+                <li class="nav-item">{!! link_to_route('contact.index', 'お問い合わせ', [], ['class' => 'nav-link']) !!}</li>
                 @if (Auth::check())
                     //<li class="nav-item">{!! link_to_route('users.index', '選手一覧', [], ['class' => 'nav-link']) !!}</li>
                     <li class="nav-item dropdown">

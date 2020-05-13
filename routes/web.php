@@ -76,3 +76,12 @@ Route::get('/', 'Session_itemsController@index');
 Route::group(['middleware' => 'auth:admin'], function() {
     Route::get('/export{team_id?}', 'Session_itemsController@export')->name('export.session_items');
 });
+
+//入力ページ
+Route::get('/contact', 'ContactController@index')->name('contact.index');
+
+//確認ページ
+Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
+
+//送信完了ページ
+Route::post('/contact/thanks', 'ContactController@send')->name('contact.send');
