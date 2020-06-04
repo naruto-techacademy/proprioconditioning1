@@ -25,10 +25,15 @@
                         <td>@if(empty($session_item->rpe(28))){
                             {{ 'データ不足により計算不可' }}
                             }
-                            @endif{{ $session_item->rpe(28) }}</td>
+                            @elseif(count($session_items) < 14)
+                            {{ 'データ不足です' }}
+                            @else{{ $session_item->rpe(28) }}
+                            @endif</td>
                         <td>@if(empty($session_item->rpe(28))){
                             {{ 'データ不足により計算不可' }}
                             }
+                            @elseif(count($session_items) < 14)
+                            {{ 'データ不足です' }}
                             @else
                             {{ sprintf('%.2f',$session_item->rpe(7)*4/$session_item->rpe(28)) }}
                             @endif</td>
