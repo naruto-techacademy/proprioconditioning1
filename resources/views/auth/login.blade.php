@@ -41,8 +41,8 @@
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                         </a>
-                        <a class="btn btn-link" href="{{ route('admin.login') }}">
-                                    管理者のログインページ
+                        <a class="btn btn-link" href="{{ route('admin.home') }}">
+                                    管理者ページ
                         </a>
                     <div class="form-group">
                             <button type="submit" class="btn btn-primary btn-block">

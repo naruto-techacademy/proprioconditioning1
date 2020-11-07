@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'team_id' => ['string','min:3',
-                        Rule::in(['test_team', 'u-tsukuba']),
+                        Rule::in(['test_team', 'u-tsukuba','b-tsukuba']),
                         ],
         ]);
     }
